@@ -1,4 +1,10 @@
-TOKEN_API = "6742196374:AAHom6w2kY8yEO0PtV6GEXRyquUrWsR3Uek"
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+TOKEN_API = os.environ.get("TOKEN")
+
 HELP_COMMAND = """
 <b>/start</b> - <em>start work with bot</em>
 <b>/description</b> - <em>start work with bot</em>

@@ -1,5 +1,5 @@
 from aiogram import Bot, Dispatcher, executor, types
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from config import *
 
 
@@ -22,21 +22,21 @@ async def on_shutdown(_):
 
 @dp.message_handler(commands=["help"])
 async def help_command(message: types.Message):
-    await message.reply(message.from_user.id,
-                        text=HELP_COMMAND, 
+    await message.reply(text=HELP_COMMAND, 
                         parse_mode="HTML")
 
 @dp.message_handler(commands=["description"])
 async def descriptionFoo(message: types.Message):
-    await message.answer(message.from_user.id,
-                         text=DESCRIPTION_COMMAND, 
+    await message.answer(text=DESCRIPTION_COMMAND, 
                          parse_mode="HTML",  
                          disable_web_page_preview=True)
     await message.delete()
 
 @dp.message_handler(commands=["start"])
 async def startFoo(message: types.Message):
-    await message.answer(START_COMMAND, parse_mode="HTML")
+    await message.answer(text=START_COMMAND, 
+                         parse_mode="HTML")
+    
     await bot.send_sticker(message.from_user.id, 
                            sticker="CAACAgIAAxkBAAEK26tlaKJfxfWw2tm0fo6f1Z-jxFmlgAAC1xgAAm4m4UsFYy3CmOv8qzME",
                            reply_markup=kb)

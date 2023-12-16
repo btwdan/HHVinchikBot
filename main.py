@@ -8,11 +8,10 @@ dp = Dispatcher(bot)
 
 kb = ReplyKeyboardMarkup(resize_keyboard=True)
 
-b1 = KeyboardButton('/help')
-b2 = KeyboardButton('/start')
-b3 = KeyboardButton('/description')
+b1 = KeyboardButton('👍')
+b2 = KeyboardButton('👎')
 
-kb.add(b1).insert(b2).add(b3)
+kb.add(b1).insert(b2)
 
 async def on_startup(_):
     print("Bot have started correctly!")
@@ -21,7 +20,7 @@ async def on_shutdown(_):
     print("Bot have stoped!")
 
 @dp.message_handler(commands=["help"])
-async def help_command(message: types.Message):
+async def helpCommandFoo(message: types.Message):
     await message.reply(text=HELP_COMMAND, 
                         parse_mode="HTML")
 
@@ -42,16 +41,14 @@ async def startFoo(message: types.Message):
                            reply_markup=kb)
     await message.delete()
 
-@dp.message_handler(commands=["give"])
-async def sticker(message: types.Message):
-    await message.answer(text="Смотри какой смешной кот ❤️")
-    await bot.send_sticker(message.from_user.id,  
-                           sticker="CAACAgQAAxkBAAEK3q9lac256UChlEuQd0tN6OQcd4IFWwACMQADzjkIDct1CToayEPXMwQ")
-
 @dp.message_handler()
-async def sms(message: types.Message):
-    if message.text == "🖤":
-        await message.answer(text="❤️")
+async def another_messages(message: types.Message):
+    if message.text == "Пошел нахуй":
+        await message.answer(text="Сам иди!")
+    if message.text == "👍":
+        await message.answer(text="Крутой перец")
+    elif message.text == "👎":
+        await message.answer(text="Не крутой перец")
 
 if __name__== "__main__":
     executor.start_polling(dp, on_startup=on_startup, on_shutdown=on_shutdown)

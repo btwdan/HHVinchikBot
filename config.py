@@ -5,9 +5,17 @@ load_dotenv()
 
 TOKEN_API = os.environ.get("TOKEN")
 
+DB_HOST = os.environ.get("DB_HOST")
+DB_PORT = os.environ.get("DB_PORT")
+DB_NAME = os.environ.get("DB_NAME")
+DB_USER = os.environ.get("DB_USER")
+DB_PASS = os.environ.get("DB_PASS")
+
 HELP_COMMAND = """
-<b>/start</b> - <em>start work with bot</em>
-<b>/description</b> - <em>start work with bot</em>
+Итак давай пройдемся по тому что я могу делать)
+<b>/description</b> - <em>описание бота</em>
+<b>/vacancies</b> - <em>начать просматривать вакансии</em>
+<b>/statistic</b> - <em>статистика</em>
 """
 
 DESCRIPTION_COMMAND = """
